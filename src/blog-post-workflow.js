@@ -141,7 +141,12 @@ for (const siteUrl of feedList) {
 					? getYoutubePlaylistId(siteUrl)
 					: null;
 				const feed = youtubePlaylistId
-					? fetchYoutubeFeed(youtubePlaylistId, YOUTUBE_API_KEY, CUSTOM_TAGS)
+					? fetchYoutubeFeed(
+							youtubePlaylistId,
+							YOUTUBE_API_KEY,
+							CUSTOM_TAGS,
+							TOTAL_POST_COUNT,
+						)
 					: parser.parseURL(siteUrl);
 				return feed.catch(retry);
 			}, retryConfig).then(
